@@ -11,10 +11,12 @@ public class GambleEvenOdd extends Gambler implements Runnable{
 
     @Override
     public void run() {
+        int c = 0;
         while(true){
+            c++;
             Boolean apuestaPar = random.nextBoolean();
             int apuesta = 10;
-            if (saldo > apuesta) {
+            if (saldo > apuesta || c == 10) {
                 break;
             }
             saldo += - apuesta;
@@ -27,6 +29,8 @@ public class GambleEvenOdd extends Gambler implements Runnable{
                 System.out.println("Ganaste apostando a par o impar, Saldo: " + saldo);
             }else if (result == 0) {
                 System.out.println("Perdiste (salio 0), Saldo: " + saldo);
+            }else{
+                System.out.println("Perdiste apostando a par o impar, Saldo: " + saldo);
             }
             esperar();
         }

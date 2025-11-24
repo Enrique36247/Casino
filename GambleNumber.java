@@ -8,10 +8,12 @@ public class GambleNumber extends Gambler implements Runnable{
 
 	@Override
 	public void run() {
+        int c = 0;
         while (true) {
+            c++;
             int nChoose = random.nextInt(36) + 1;
             int apuesta = 10;
-            if (saldo < apuesta) {
+            if (saldo < apuesta || c == 10) {
                 break;
             }
             saldo += - apuesta;
@@ -21,10 +23,12 @@ public class GambleNumber extends Gambler implements Runnable{
             if (result == nChoose) {
                 saldo += apuesta * 36;
                 bank.totalMoney += -apuesta * 36;
-                System.out.println("Has ganado, Saldo: " + saldo);
+                System.out.println("Has ganado apostando a un numero, Saldo: " + saldo);
                 
             }else if (result == 0) {
                 System.out.println("Pierdes (salio 0), Saldo: " + saldo);
+            }else{
+                System.out.println("Perdiste apostando a un numero, Saldo:" + saldo);
             }
             esperar();
         }

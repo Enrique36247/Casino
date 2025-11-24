@@ -12,9 +12,11 @@ public class GambleMartindala extends Gambler implements Runnable{
 
     @Override
     public void run() {
+        int c = 0;
         while(true){
+            c++;
             int apuesta = apuestaActual;
-            if (saldo < apuesta) {
+            if (saldo < apuesta || c == 10) {
                 break;
             }
             saldo += - apuesta;
@@ -28,6 +30,9 @@ public class GambleMartindala extends Gambler implements Runnable{
                 System.out.println("Has ganado a Martindala, Saldo: " + saldo);
                 apuestaActual = 10;
                 nChoose = random.nextInt(36) + 1;
+                break;
+            }else if(result == 0){
+                System.out.println("Has perdido (salio 0), Saldo: " + saldo);
             }else{
                 apuestaActual *= 2;
                 System.out.println("Has Perdido a Martindala, Nueva apuesta: " + apuestaActual);
