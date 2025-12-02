@@ -27,6 +27,6 @@ public class TreadRunner {
         try{Thread.sleep(30000);}catch(InterruptedException e){Thread.currentThread().interrupt();}
 
         System.out.println("-------Fin-------");
-        System.out.println("Saldo de la banca: " + bank.totalMoney);
+        System.out.println("Saldo de la banca: " + bank.getTotalMoney());
     }
 }

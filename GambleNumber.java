@@ -17,12 +17,12 @@ public class GambleNumber extends Gambler implements Runnable{
                 break;
             }
             saldo += - apuesta;
-            bank.totalMoney += apuesta;
+            bank.setTotalMoney(bank.getTotalMoney() + apuesta);
             int result = random.nextInt(37);
 
             if (result == nChoose) {
                 saldo += apuesta * 36;
-                bank.totalMoney += -apuesta * 36;
+                bank.setTotalMoney(bank.getTotalMoney() - apuesta * 36); 
                 System.out.println("Has ganado apostando a un numero, Saldo: " + saldo);
                 
             }else if (result == 0) {

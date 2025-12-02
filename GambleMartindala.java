@@ -20,13 +20,13 @@ public class GambleMartindala extends Gambler implements Runnable{
                 break;
             }
             saldo += - apuesta;
-            bank.totalMoney += apuesta;
+            bank.setTotalMoney(bank.getTotalMoney() + apuesta); 
 
             int result = random.nextInt(37);
 
             if (result == nChoose) {
                 saldo += apuesta * 36;
-                bank.totalMoney += -apuesta * 36;
+                bank.setTotalMoney(bank.getTotalMoney() - apuesta * 36);
                 System.out.println("Has ganado a Martindala, Saldo: " + saldo);
                 apuestaActual = 10;
                 nChoose = random.nextInt(36) + 1;
